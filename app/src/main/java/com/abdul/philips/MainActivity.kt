@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
                 var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:9876543")) //implicit intent
                 startActivity(dIntent)
             }
+            R.id.btnAlarm -> {
+                createAlarm("philips",16,54)
+            }
+
         }
        // setTextView()
     }
@@ -51,6 +56,19 @@ class MainActivity : AppCompatActivity() {
         //tvRes.setText(name);
         tvRes.text = name
     }
+
+    fun createAlarm(message: String, hour: Int, minutes: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_HOUR, hour)
+            putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+
 
 
 }
