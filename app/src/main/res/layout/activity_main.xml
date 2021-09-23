@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
         android:layout_marginTop="69dp"
-        android:textColor="@color/font_color_philips"
         android:text="Hello Abdul!"
+        android:textColor="@color/font_color_philips"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -48,10 +47,21 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:textColor="@color/font_color_philips"
         android:hint="@string/enter_pwd"
         android:inputType="textPassword"
+        android:textColor="@color/font_color_philips"
         app:layout_constraintStart_toStartOf="@+id/etName"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+    <Button
+        android:id="@+id/btnDial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickHandler"
+        android:text="dial"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

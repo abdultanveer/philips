@@ -1,6 +1,7 @@
 package com.abdul.philips
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -23,10 +24,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickHandler(view: View) {
+        when(view.id){
+            R.id.button -> {
+                startHome()
+            }
+            R.id.btnDial -> {
+                var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:9876543")) //implicit intent
+                startActivity(dIntent)
+            }
+        }
        // setTextView()
+    }
+
+    private fun startHome() {
         var data = etName.text.toString()
-        var hIntent: Intent = Intent(this,HomeActivity::class.java);
-        hIntent.putExtra("namekey",data)
+        var hIntent: Intent = Intent(this, HomeActivity::class.java) //explicit intent
+        hIntent.putExtra("namekey", data)
         startActivity(hIntent)
     }
 
