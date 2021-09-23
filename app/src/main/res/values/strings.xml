@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">philips</string>
+    <string name="enter_pwd">enter password</string>
+    <string name="enter_name">enter name</string>
+    <string name="submit">Login</string>
+
 </resources>
