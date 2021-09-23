@@ -1,5 +1,6 @@
 package com.abdul.philips
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,9 +23,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickHandler(view: View) {
+       // setTextView()
+        var data = etName.text.toString()
+        var hIntent: Intent = Intent(this,HomeActivity::class.java);
+        hIntent.putExtra("namekey",data)
+        startActivity(hIntent)
+    }
+
+    private fun setTextView() {
         //get the data from edittext
         //String name = etName.gettext().toString();
-        var name:String = etName.text.toString()
+        var name: String = etName.text.toString()
         //put that data into the textview
         //tvRes.setText(name);
         tvRes.text = name
