@@ -61,12 +61,17 @@ class HomeActivity : AppCompatActivity() {
 
     fun handleClick(view: View) { //step 2
         //get the contact from edittext
+        var i =0
+        for(j in 1..10){
+             i = i+j
+        }
         var data = etContact.text.toString()
         //put the contact in a intent
-        var res = add(10,20)
         var intent:Intent = Intent()
         intent.putExtra("contactkey",data)
-        throw NullPointerException()
+        var res = add(10,20)
+
+       // throw NullPointerException()
 
         //send the data to the parent activity[mainactivity]
         setResult(RESULT_OK,intent) //result code -- smell/ it'll inform the parent activity whether the result is good for consumption

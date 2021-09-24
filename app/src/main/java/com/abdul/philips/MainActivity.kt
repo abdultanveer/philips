@@ -73,8 +73,10 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intent)
         //request code helps you determine from which childactivity[camera/contact] is returning the data
         //request code = 123, result code =RESULT_OK
-        var data = intent?.getStringExtra("contactkey")
-        tvRes.text = data
+        if(resultCode ==  RESULT_OK && requestCode == 123) {
+            var data = intent?.getStringExtra("contactkey")
+            tvRes.text = data
+        }
     }
 
 
