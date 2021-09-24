@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         //var data = etName.text.toString()
         var hIntent: Intent = Intent(this, HomeActivity::class.java) //explicit intent
        // hIntent.putExtra("namekey", data)
-        startActivityForResult(hIntent,123) //what is request code--123
+        startActivityForResult(hIntent,123) //step1   what is request code--123
         //for eg on whatsapp -- camera,contact, location the return point is onActivityREsult
     }
 
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) { //step 3
         super.onActivityResult(requestCode, resultCode, intent)
         //request code helps you determine from which childactivity[camera/contact] is returning the data
         //request code = 123, result code =RESULT_OK
