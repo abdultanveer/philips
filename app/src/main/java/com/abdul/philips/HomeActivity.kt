@@ -63,11 +63,18 @@ class HomeActivity : AppCompatActivity() {
         //get the contact from edittext
         var data = etContact.text.toString()
         //put the contact in a intent
+        var res = add(10,20)
         var intent:Intent = Intent()
         intent.putExtra("contactkey",data)
+        throw NullPointerException()
+
         //send the data to the parent activity[mainactivity]
         setResult(RESULT_OK,intent) //result code -- smell/ it'll inform the parent activity whether the result is good for consumption
         //finish/close this activity
         finish()
+    }
+
+    fun add(a: Int, b: Int): Int{
+        return a+b
     }
 }
