@@ -42,10 +42,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startHome() {
-        var data = etName.text.toString()
+        //var data = etName.text.toString()
         var hIntent: Intent = Intent(this, HomeActivity::class.java) //explicit intent
-        hIntent.putExtra("namekey", data)
-        startActivity(hIntent)
+       // hIntent.putExtra("namekey", data)
+        startActivityForResult(hIntent,123) //what is request code--123
+        //for eg on whatsapp -- camera,contact, location the return point is onActivityREsult
     }
 
     private fun setTextView() {
@@ -66,6 +67,14 @@ class MainActivity : AppCompatActivity() {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+        //request code helps you determine from which childactivity[camera/contact] is returning the data
+        //request code = 123, result code =RESULT_OK
+        var data = intent?.getStringExtra("contactkey")
+        tvRes.text = data
     }
 
 
