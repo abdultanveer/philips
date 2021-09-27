@@ -5,20 +5,30 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.TextView
 
 class HomeActivity : AppCompatActivity() {
     lateinit var tvHome: TextView
     lateinit var etContact:EditText
+    lateinit var lvCountries:ListView
 
     var TAG = HomeActivity::class.java.simpleName
+    var coutries = arrayListOf<String>("india","usa","uk","australia")//plug
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         etContact = findViewById(R.id.etContact)
         Log.i(TAG, "oncreate")
+        lvCountries = findViewById(R.id.countriesLV)//socket
+        var adapter:ArrayAdapter<String> = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1,
+            coutries)
+        lvCountries.adapter = adapter
+
       /*  tvHome = findViewById(R.id.tvHome)
 
        var name = intent.getStringExtra("namekey")
