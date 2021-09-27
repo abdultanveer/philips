@@ -30,7 +30,8 @@ public class NetworkUtils {
                     .appendQueryParameter(MAX_RESULTS, "3")
                     .appendQueryParameter(PRINT_TYPE, "books")
                     .build();
-            URL requestURL = new URL(builtURI.toString());
+            URL requestURL =  new URL("https://api.openweathermap.org/data/2.5/weather?q=california&appid=9166");
+                    //builtURI.toString());
             Log.i(LOG_TAG, requestURL.toString());
 
             urlConnection = (HttpURLConnection) requestURL.openConnection();

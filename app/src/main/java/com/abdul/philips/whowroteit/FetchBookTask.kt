@@ -21,7 +21,7 @@ class FetchBookTask(val mTitleText: TextView, val mAuthorText: TextView) :
         super.onPostExecute(jsonString)
         Log.i(TAG, "result is \n" + jsonString)
 
-        val rootJsonObject = JSONObject(jsonString)
+       /* val rootJsonObject = JSONObject(jsonString)
         val itemsArray = rootJsonObject.getJSONArray("items")
 
         for (i in 0 until itemsArray.length()) {
@@ -37,12 +37,15 @@ class FetchBookTask(val mTitleText: TextView, val mAuthorText: TextView) :
             } catch (e: Exception) {
                 e.printStackTrace();
             }
+            }
+
+            */
 
 
 
             //mTitleText.setText("No Results Found");
 
-        }
+
     }
 
 
