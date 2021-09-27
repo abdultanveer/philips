@@ -6,15 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var etName: EditText
     lateinit var tvRes: TextView
+    lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +20,13 @@ class MainActivity : AppCompatActivity() {
 
         etName = findViewById(R.id.etName)  //what is findviewbyid
         tvRes = findViewById(R.id.textView) //what is R.id
+        progressBar = findViewById(R.id.progressBar)
     }
 
     fun clickHandler(view: View) {
         when(view.id){
             R.id.btnDownload -> {
-                var downloadTask = DownloadTask()
+                var downloadTask = DownloadTask(progressBar)
                 downloadTask.execute("http://urlForimage.com")
             }
             R.id.button -> {

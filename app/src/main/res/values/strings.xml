@@ -3,5 +3,6 @@
     <string name="enter_pwd">enter password</string>
     <string name="enter_name">enter name</string>
     <string name="submit">Login</string>
+    <string name="instructions">my instructions</string>
 
 </resources>
