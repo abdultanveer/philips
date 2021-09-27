@@ -26,24 +26,21 @@ class FetchBookTask(val mTitleText: TextView, val mAuthorText: TextView) :
 
         for (i in 0 until itemsArray.length()) {
             val book = itemsArray.getJSONObject(i)
-            val title: String? = null
-            val authors: String? = null
+
             val volumeInfo = book.getJSONObject("volumeInfo")
 
             try {
                 var title = volumeInfo.getString("title");
                 var authors = volumeInfo.getString("authors");
+                mTitleText.setText(title);
+                mAuthorText.setText(authors);
             } catch (e: Exception) {
                 e.printStackTrace();
             }
 
-            if (title != null && authors != null) {
-                mTitleText.setText(title);
-                mAuthorText.setText(authors);
-                return;
-            }
 
-            mTitleText.setText("No Results Found");
+
+            //mTitleText.setText("No Results Found");
 
         }
     }
