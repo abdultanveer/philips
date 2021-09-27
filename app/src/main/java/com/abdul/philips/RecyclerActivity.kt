@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerActivity : AppCompatActivity() {
-    var coutries = arrayListOf<String>("india","usa","uk","australia")//plug
+    var coutries = arrayListOf<String>("india","usa","uk","australia","india","usa","uk","australia")//plug
     lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class RecyclerActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.countriesRV)  //taking the handle of recyclerview
 
         var adapter = WordsAdapter(coutries)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recyclerView.adapter = adapter
 
     }

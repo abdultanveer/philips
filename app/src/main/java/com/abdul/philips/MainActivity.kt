@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
     fun clickHandler(view: View) {
         when(view.id){
             R.id.button -> {
-                startHome()
+                //startHome()
+                setTextView()
             }
             R.id.btnDial -> {
                 var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:9876543")) //implicit intent
