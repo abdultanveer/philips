@@ -12,6 +12,6 @@ class RecyclerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler) //layout inflater
         recyclerView = findViewById(R.id.countriesRV)  //taking the handle of recyclerview
-        
+
     }
 }
