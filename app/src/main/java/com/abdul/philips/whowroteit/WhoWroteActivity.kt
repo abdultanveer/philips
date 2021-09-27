@@ -1,4 +1,4 @@
-package com.abdul.philips
+package com.abdul.philips.whowroteit
 
 import android.os.Bundle
 import android.view.View
@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 
 import android.widget.EditText
-
-
+import com.abdul.philips.R
 
 
 class WhoWroteActivity : AppCompatActivity() {

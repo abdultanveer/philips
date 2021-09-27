@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Philips">
         <activity
-            android:name=".WhoWroteActivity"
+            android:name=".whowroteit.WhoWroteActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
