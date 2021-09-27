@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         etContact = findViewById(R.id.etContact)
         Log.i(TAG, "oncreate")
-        lvCountries = findViewById(R.id.countriesLV)//socket
+        lvCountries = findViewById(R.id.countriesLV)//socketgit
         var adapter:ArrayAdapter<String> = ArrayAdapter(this,
             android.R.layout.simple_list_item_1,
             coutries)
