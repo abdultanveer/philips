@@ -68,14 +68,36 @@
 
     <Button
         android:id="@+id/btnAlarm"
-        android:onClick="clickHandler"
-
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_marginEnd="37dp"
+        android:onClick="clickHandler"
         android:text="Alarm"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnDial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="9dp"
+        android:text="download"
+        android:onClick="clickHandler"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlarm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

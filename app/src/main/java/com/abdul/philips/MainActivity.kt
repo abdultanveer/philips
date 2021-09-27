@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity() {
 
     fun clickHandler(view: View) {
         when(view.id){
+            R.id.btnDownload -> {
+                var downloadTask = DownloadTask()
+                downloadTask.execute("http://urlForimage.com")
+            }
             R.id.button -> {
                 //startHome()
                 setTextView()
