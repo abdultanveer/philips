@@ -87,13 +87,13 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-   public fun add(a: Int, b: Int): Int{
+    fun add(a: Int, b: Int): Int{
         return a+b
     }
 
     fun serviceHandler(view: View) {
         when(view.id){
-            R.id.start -> {
+            R.id.btnStart -> {
                 var intent = Intent(this,MusicService::class.java)
                 intent.putExtra("mkey","play music.mp3")
                 startService(intent)

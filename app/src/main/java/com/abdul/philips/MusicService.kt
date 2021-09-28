@@ -19,8 +19,9 @@ class MusicService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        return super.onStartCommand(intent, flags, startId)
+         super.onStartCommand(intent, flags, startId)
         Log.i(TAG,"i received a command --"+ intent?.getStringExtra("mkey"))
+        return START_STICKY
 
     }
 
