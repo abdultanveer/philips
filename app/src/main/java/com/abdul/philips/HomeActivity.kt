@@ -1,9 +1,10 @@
 package com.abdul.philips
 
-import android.content.ComponentName
-import android.content.Intent
-import android.content.IntentFilter
-import android.content.ServiceConnection
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.*
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
@@ -13,6 +14,8 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import com.abdul.philips.recycler.RecyclerActivity
 
 class HomeActivity : AppCompatActivity() {
     lateinit var tvHome: TextView
@@ -131,4 +134,41 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    var CHANNEL_ID  = "philips channel id"
+    fun showNotification(view: View) {
+        val intent = Intent(this, RecyclerActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+
+        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setContentTitle("textTitle")
+            .setContentText("textContent")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+
+        var notification = builder.build()
+        createNotificationChannel()
+        notificationManager.notify(123,notification)
     }
+    lateinit var notificationManager: NotificationManager
+
+    private fun createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "chanell name"
+            val descriptionText = "philips channel desc"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID, name.toString(), importance).apply {
+                description = descriptionText.toString()
+            }
+            // Register the channel with the system
+             notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+}

@@ -57,7 +57,7 @@
     <ListView
         android:id="@+id/countriesLV"
         android:layout_width="409dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,22 +89,33 @@
 
     <Button
         android:id="@+id/btnBind"
-        android:onClick="bindHandler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:onClick="bindHandler"
         android:text="bind"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/button2" />
 
     <Button
         android:id="@+id/btnUnbind"
-        android:onClick="bindHandler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="2dp"
+        android:onClick="bindHandler"
         android:text="unbind"
         app:layout_constraintStart_toEndOf="@+id/btnBind"
         app:layout_constraintTop_toTopOf="@+id/btnBind" />
+
+    <Button
+        android:id="@+id/btnNotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="36dp"
+        android:onClick="showNotification"
+        android:text="notify"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
