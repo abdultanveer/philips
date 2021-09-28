@@ -2,6 +2,7 @@ package com.abdul.philips
 
 import android.app.Service
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
@@ -21,6 +22,8 @@ class MusicService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
          super.onStartCommand(intent, flags, startId)
         Log.i(TAG,"i received a command --"+ intent?.getStringExtra("mkey"))
+        var mediaPlayer = MediaPlayer.create(this,R.raw.music)
+        mediaPlayer.start()
         return START_STICKY
 
     }
