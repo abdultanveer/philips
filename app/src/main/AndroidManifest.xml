@@ -13,36 +13,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Philips" >
-
-        <!--static regn-->
+        <service
+            android:name=".MusicService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <!-- static regn -->
         <receiver
             android:name=".SmsReceiver"
             android:enabled="true"
-            android:exported="true">
-            <intent-filter >
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"></action>
-                <category android:name="android.intent.category.DEFAULT"/>
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
         <activity
             android:name=".whowroteit.WhoWroteActivity"
+            android:exported="true"
+            android:label="who wrote this book" >
+
+        </activity>
+        <activity
+            android:name=".recycler.RecyclerActivity"
             android:exported="true" >
+
+        </activity>
+<!--         i plan to share my home activity card with other apps -->
+        <activity android:name=".HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".RecyclerActivity"
-            android:exported="true" >
-            android:exported="true">
-        </activity>
-        <activity android:name=".HomeActivity" >
-            <intent-filter>
-                <action android:name="ineed.water.abdul"/>
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity

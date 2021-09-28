@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 setTextView()
             }
             R.id.btnDial -> {
-                var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:9876543")) //implicit intent
+                var dIntent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:9876543")) //implicit intent
                 startActivity(dIntent)
             }
             R.id.btnAlarm -> {

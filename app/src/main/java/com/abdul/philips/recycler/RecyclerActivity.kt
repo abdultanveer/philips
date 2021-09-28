@@ -1,9 +1,10 @@
-package com.abdul.philips
+package com.abdul.philips.recycler
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.abdul.philips.R
 
 class RecyclerActivity : AppCompatActivity() {
     var coutries = arrayListOf<String>("india","usa","uk","australia","india","usa","uk","australia")//plug

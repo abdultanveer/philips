@@ -18,7 +18,6 @@ class HomeActivity : AppCompatActivity() {
 
     var TAG = HomeActivity::class.java.simpleName
     var coutries = arrayListOf<String>("india","usa","uk","australia")//plug
-    var smsReceiver = SmsReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +29,8 @@ class HomeActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             coutries)
         lvCountries.adapter = adapter
-        var intentFilter = IntentFilter("android.provider.Telephony.SMS_RECEIVED")
-        registerReceiver(smsReceiver,intentFilter) //dynamic regn
 
-      /*  tvHome = findViewById(R.id.tvHome)
 
-       var name = intent.getStringExtra("namekey")
-        tvHome.setText(name)*/
 
     }
 
@@ -62,7 +56,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.v(TAG, "onStop")
-        unregisterReceiver(smsReceiver)
 
     }
 
@@ -94,7 +87,21 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-    fun add(a: Int, b: Int): Int{
+   public fun add(a: Int, b: Int): Int{
         return a+b
+    }
+
+    fun serviceHandler(view: View) {
+        when(view.id){
+            R.id.start -> {
+                var intent = Intent(this,MusicService::class.java)
+                intent.putExtra("mkey","play music.mp3")
+                startService(intent)
+            }
+            R.id.btnStop -> {
+                var intent = Intent(this,MusicService::class.java)
+                stopService(intent)
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.abdul.philips
+package com.abdul.philips.recycler
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.abdul.philips.R
 
 class WordsAdapter(val coutries: ArrayList<String>) : Adapter<WordsAdapter.WordsViewHolder>(){
 
