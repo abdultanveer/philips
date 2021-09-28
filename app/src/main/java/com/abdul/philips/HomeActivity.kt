@@ -1,6 +1,7 @@
 package com.abdul.philips
 
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
 
     var TAG = HomeActivity::class.java.simpleName
     var coutries = arrayListOf<String>("india","usa","uk","australia")//plug
+    var smsReceiver = SmsReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,8 @@ class HomeActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             coutries)
         lvCountries.adapter = adapter
+        var intentFilter = IntentFilter("android.provider.Telephony.SMS_RECEIVED")
+        registerReceiver(smsReceiver,intentFilter) //dynamic regn
 
       /*  tvHome = findViewById(R.id.tvHome)
 
@@ -58,6 +62,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.v(TAG, "onStop")
+        unregisterReceiver(smsReceiver)
 
     }
 
