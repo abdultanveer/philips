@@ -1,9 +1,12 @@
 package com.abdul.philips
 
+import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.ServiceConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.IBinder
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
@@ -104,4 +107,28 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-}
+
+    fun bindHandler(view: View) { //activity gets bound with the service
+        var intent = Intent(this,MusicService::class.java)
+        bindService(intent,serviceConnection, BIND_AUTO_CREATE)
+    }
+
+    private lateinit var mService: MusicService //MusicService()
+
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(p0: ComponentName?, binderPipe: IBinder?) {
+            val binder = binderPipe as MusicService.LocalBinder
+            mService = binder.getService()
+           var result = mService.add(10,34)
+            Log.i(TAG,"result ="+result)
+
+
+        }
+
+        override fun onServiceDisconnected(p0: ComponentName?) {
+            TODO("Not yet implemented")
+        }
+
+    }
+
+    }

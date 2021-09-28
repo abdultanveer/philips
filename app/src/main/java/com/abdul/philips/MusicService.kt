@@ -3,6 +3,7 @@ package com.abdul.philips
 import android.app.Service
 import android.content.Intent
 import android.media.MediaPlayer
+import android.os.Binder
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
@@ -28,8 +29,17 @@ class MusicService : Service() {
 
     }
 
-    override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
+
+
+    private val binderPipe = LocalBinder()
+
+    override fun onBind(intent: Intent): IBinder { //binder for synchronous communication, intents for async commu
+        return binderPipe
+    }
+
+    inner class LocalBinder : Binder() {
+        // Return this instance of LocalService so clients can call public methods
+        fun getService(): MusicService = this@MusicService
     }
 
     override fun onDestroy() {
@@ -37,4 +47,6 @@ class MusicService : Service() {
         Log.i(TAG,"service destroyed")
 
     }
+
+    fun add(a:Int, b:Int) = a+b
 }
