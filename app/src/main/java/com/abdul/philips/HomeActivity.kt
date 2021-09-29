@@ -10,12 +10,11 @@ import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.core.app.NotificationCompat
 import com.abdul.philips.recycler.RecyclerActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class HomeActivity : AppCompatActivity() {
     lateinit var tvHome: TextView
@@ -169,6 +168,24 @@ class HomeActivity : AppCompatActivity() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    fun getRegnTokenFCM(view: View) {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token: String = task.getResult().toString()
+
+                // Log and toast
+                //val msg = getString(R.string.msg_token_fmt, token)
+                Log.d(TAG, token)
+                Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
+            })
     }
 
 }

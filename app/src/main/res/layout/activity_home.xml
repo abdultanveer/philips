@@ -118,4 +118,13 @@
         android:text="notify"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/btnFcm"
+        android:onClick="getRegnTokenFCM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register fcm"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="252dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
