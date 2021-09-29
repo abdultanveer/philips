@@ -12,9 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="47dp"
+        android:layout_marginBottom="210dp"
         android:ems="10"
         android:hint="enter title"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/dbList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,4 +75,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnGet"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/dbList"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

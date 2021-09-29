@@ -1,18 +1,18 @@
 package com.abdul.philips.datastorage
 
 import android.content.SharedPreferences
+import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import com.abdul.philips.R
 import com.abdul.philips.datastorage.db.NotesDao
 import com.abdul.philips.datastorage.model.TodoNote
+import com.abdul.philips.datastorage.db.FeedReaderContract.FeedEntry;
 
-class DataActivity : AppCompatActivity() {
+
+class DataActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     lateinit var etTitle: EditText
     lateinit var etNotes: EditText
@@ -21,6 +21,7 @@ class DataActivity : AppCompatActivity() {
     lateinit var btnGet: Button
     lateinit var notesDao: NotesDao
     lateinit var tvResult: TextView
+    lateinit var lvDb: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +33,29 @@ class DataActivity : AppCompatActivity() {
         btnPut = findViewById(R.id.btnPut)
         btnGet = findViewById(R.id.btnGet)
         tvResult = findViewById(R.id.tvResult)
+        lvDb = findViewById(R.id.dbList)
+
+        lvDb.setOnItemClickListener(this)
 
         notesDao = NotesDao(this)
         notesDao.openDb()
     }
+
+
+    override fun onStart() {
+        super.onStart()
+        var colNames = arrayOf(FeedEntry.COLUMN_NAME_TITLE,FeedEntry.COLUMN_NAME_SUBTITLE)
+        var toArray = intArrayOf(android.R.id.text1,android.R.id.text2)
+       var dataCursor: Cursor = notesDao.getAllNotes()
+        var adapter = SimpleCursorAdapter(this,
+                 android.R.layout.simple_list_item_2, //row layout
+                     dataCursor, //data
+                        colNames,
+                         toArray) // array of textviews in each row
+        lvDb.adapter = adapter
+
+    }
+
 
     override fun onPause() {
         super.onPause()
@@ -100,6 +120,15 @@ class DataActivity : AppCompatActivity() {
         var todoNote: TodoNote = TodoNote(title,subtitle)
        // notesDao.createNote("first title","first subtitle")
         notesDao.createNote(todoNote)
+    }
+
+    override fun onItemClick(adapterView: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+        var itemClicked = adapterView?.getItemAtPosition(position) as Cursor
+        val titleIndex: Int = itemClicked.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_TITLE)
+        val title: String = itemClicked.getString(titleIndex)
+
+
+        Toast.makeText(this,title,Toast.LENGTH_SHORT).show()
     }
 
 

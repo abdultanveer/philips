@@ -51,4 +51,9 @@ public class NotesDao {
 
         database.insert(FeedEntry.TABLE_NAME,null,values);
     }
+
+    @NotNull
+    public Cursor getAllNotes() {
+        return     database.query(FeedEntry.TABLE_NAME,null,null,null,null,null,null);
+    }
 }
