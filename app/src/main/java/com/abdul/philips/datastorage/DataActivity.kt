@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import com.abdul.philips.R
 import com.abdul.philips.datastorage.db.NotesDao
 import com.abdul.philips.datastorage.model.TodoNote
@@ -19,6 +20,7 @@ class DataActivity : AppCompatActivity() {
     lateinit var  btnPut: Button
     lateinit var btnGet: Button
     lateinit var notesDao: NotesDao
+    lateinit var tvResult: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class DataActivity : AppCompatActivity() {
         cbRemPwd = findViewById(R.id.cbRemPwd)
         btnPut = findViewById(R.id.btnPut)
         btnGet = findViewById(R.id.btnGet)
+        tvResult = findViewById(R.id.tvResult)
 
         notesDao = NotesDao(this)
         notesDao.openDb()
@@ -86,6 +89,8 @@ class DataActivity : AppCompatActivity() {
     }
 
     private fun getDataDb() {
+        var result = notesDao.readNote()
+        tvResult.setText(result)
     }
 
     private fun putDataDb() {

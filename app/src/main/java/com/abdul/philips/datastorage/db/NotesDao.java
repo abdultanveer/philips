@@ -2,6 +2,7 @@ package com.abdul.philips.datastorage.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.abdul.philips.datastorage.db.FeedReaderContract.FeedEntry;
 import com.abdul.philips.datastorage.model.TodoNote;
@@ -30,7 +31,16 @@ public class NotesDao {
 
         database.insert(FeedEntry.TABLE_NAME,null,values);
     }
-    public void readNote(){}
+    public String readNote(){
+        Cursor cursor = database.query(FeedEntry.TABLE_NAME,null,null,null,null,null,null);
+        cursor.moveToLast();
+        int titleIndex = cursor.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_TITLE);
+        int subtitleIndex = cursor.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_SUBTITLE);
+        String title = cursor.getString(titleIndex);
+        String subTitle = cursor.getString(subtitleIndex);
+        return title +"\n"+ subTitle;
+
+    }
     public void updateNote(){}
     public void deleteNote(){}
 
