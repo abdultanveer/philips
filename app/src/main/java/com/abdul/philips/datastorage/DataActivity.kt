@@ -9,6 +9,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import com.abdul.philips.R
 import com.abdul.philips.datastorage.db.NotesDao
+import com.abdul.philips.datastorage.model.TodoNote
 
 class DataActivity : AppCompatActivity() {
 
@@ -88,7 +89,12 @@ class DataActivity : AppCompatActivity() {
     }
 
     private fun putDataDb() {
-        notesDao.createNote("first title","first subtitle")
+        var title = etTitle.text.toString()
+        var subtitle = etNotes.text.toString()
+
+        var todoNote: TodoNote = TodoNote(title,subtitle)
+       // notesDao.createNote("first title","first subtitle")
+        notesDao.createNote(todoNote)
     }
 
 

@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import com.abdul.philips.datastorage.db.FeedReaderContract.FeedEntry;
+import com.abdul.philips.datastorage.model.TodoNote;
+
+import org.jetbrains.annotations.NotNull;
 
 
 //db access object - chef
@@ -31,4 +34,11 @@ public class NotesDao {
     public void updateNote(){}
     public void deleteNote(){}
 
+    public void createNote(@NotNull TodoNote todoNote) {
+        ContentValues values = new ContentValues();
+        values.put(FeedEntry.COLUMN_NAME_TITLE,todoNote.getTitle());
+        values.put(FeedEntry.COLUMN_NAME_SUBTITLE,todoNote.getSubtitle());
+
+        database.insert(FeedEntry.TABLE_NAME,null,values);
+    }
 }
