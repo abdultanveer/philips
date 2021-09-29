@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.abdul.philips" >
+    package="com.abdul.philips">
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,16 +12,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Philips" >
+        android:theme="@style/Theme.Philips">
+        <activity
+            android:name=".datastorage.DataActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher_background" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/design_default_color_primary" />
-
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"
@@ -33,13 +44,11 @@
         <service
             android:name=".MusicService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
-        <!-- static regn -->
+            android:exported="true"></service> <!-- static regn -->
         <receiver
             android:name=".SmsReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
 
@@ -50,26 +59,16 @@
         <activity
             android:name=".whowroteit.WhoWroteActivity"
             android:exported="true"
-            android:label="who wrote this book" >
-
-        </activity>
+            android:label="who wrote this book"></activity>
         <activity
             android:name=".recycler.RecyclerActivity"
-            android:exported="true" >
+            android:exported="true"></activity> <!-- i plan to share my home activity card with other apps -->
+        <activity android:name=".HomeActivity">
 
-        </activity>
-<!--         i plan to share my home activity card with other apps -->
-        <activity android:name=".HomeActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

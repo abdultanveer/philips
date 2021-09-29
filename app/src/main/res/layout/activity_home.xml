@@ -121,10 +121,11 @@
 
     <Button
         android:id="@+id/btnFcm"
-        android:onClick="getRegnTokenFCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:onClick="getRegnTokenFCM"
         android:text="Register fcm"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="252dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnNotify"
+        app:layout_constraintStart_toEndOf="@+id/btnNotify" />
 </androidx.constraintlayout.widget.ConstraintLayout>
