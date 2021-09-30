@@ -5,7 +5,9 @@
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Philips">
         <activity
-            android:name=".datastorage.ContentProviderActivity"
+            android:name=".datastorage.RoomActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".datastorage.DataActivity"
+            android:name=".datastorage.ContentProviderActivity"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".datastorage.DataActivity"
+            android:exported="true"></activity>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -68,7 +73,7 @@
         <activity
             android:name=".recycler.RecyclerActivity"
             android:exported="true" /> <!-- i plan to share my home activity card with other apps -->
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
