@@ -10,7 +10,11 @@ import com.abdul.philips.datastorage.model.TodoNote;
 import org.jetbrains.annotations.NotNull;
 
 
-//db access object - chef
+//db access object - chef\
+
+/**
+ * this class handles db operations
+ */
 public class NotesDao {
     SQLiteDatabase database;
     FeedReaderDbHelper dbHelper;
@@ -19,10 +23,15 @@ public class NotesDao {
         dbHelper = new FeedReaderDbHelper(context);
     }
 
+    /**
+     * this method opens the db in writeable mode
+     */
     public void openDb(){
         database = dbHelper.getWritableDatabase();
     }
-    public  void closeDb(){}
+    public  void closeDb(){
+        database.close();
+    }
 
     public void createNote(String title, String subtitle){
         ContentValues values = new ContentValues();
@@ -44,6 +53,10 @@ public class NotesDao {
     public void updateNote(){}
     public void deleteNote(){}
 
+    /**
+     * This will create a row in the table
+     * @param todoNote the note to be inserted in the db table
+     */
     public void createNote(@NotNull TodoNote todoNote) {
         ContentValues values = new ContentValues();
         values.put(FeedEntry.COLUMN_NAME_TITLE,todoNote.getTitle());
