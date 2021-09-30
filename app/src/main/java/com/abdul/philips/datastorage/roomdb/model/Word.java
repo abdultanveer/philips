@@ -15,5 +15,5 @@ public class Word {
     int wid;
 
     @ColumnInfo
-    String title;
+   public String title;
 }
