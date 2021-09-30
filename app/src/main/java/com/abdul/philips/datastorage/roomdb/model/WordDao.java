@@ -12,6 +12,9 @@ public interface WordDao {
     @Insert
     void insert(Word word);
 
+    @Query("SELECT * from Word ORDER BY title ASC")
+    List<Word> getAllNotes();
+
     /*@Query("SELECT * FROM Word WHERE title LIKE :word ")
     List<Word> findNote(Word word);*/
 
