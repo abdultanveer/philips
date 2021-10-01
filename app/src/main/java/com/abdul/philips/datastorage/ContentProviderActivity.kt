@@ -9,6 +9,10 @@ import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.abdul.philips.R
 import com.abdul.philips.datastorage.db.FeedReaderContract
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ContentProviderActivity : AppCompatActivity() {
     lateinit var cpListView: ListView
@@ -33,5 +37,8 @@ class ContentProviderActivity : AppCompatActivity() {
             toArray) // array of textviews in each row
 
         cpListView.adapter = adapter
+
+
+
     }
 }
